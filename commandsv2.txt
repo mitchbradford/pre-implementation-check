@@ -1,8 +1,0 @@
-exit
-show ver
-show ip int brief
-show int status
-show arp
-show mac address-table
-show cdp nei
-show cdp nei detail
