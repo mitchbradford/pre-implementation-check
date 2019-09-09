@@ -3,10 +3,6 @@
 # Dependencies - Netmiko, Python 3
 # Instructions - List IP addresses in routers.txt and commands to run in commands.txt
 # === Formatting ===
-# routers.txt:
-# [ip address]
-# [ip address]
-#
 # commands.txt:
 # exit
 # [enable priv command]
@@ -18,15 +14,19 @@ from paramiko.ssh_exception import SSHException
 from netmiko.ssh_exception import  AuthenticationException
 from getpass import getpass
 from pprint import pprint
+import ipaddress
 
 with open('commands.txt') as f:
 	commands_list = f.read().splitlines()
 
-with open('routers.txt') as f:
-	router_list = f.read().splitlines()
+username = input('Enter your username:')
+password = getpass()
 
-username=input('Enter your username:')
-password=getpass()
+# enter IP range
+ip_network_start = input('Enter the first IP: ')
+ip_network_start = ipaddress.IPv4Address(ip_network_start)
+ip_network_end = input('Enter the last IP: ')
+ip_network_end = ipaddress.IPv4Address(ip_network_end)
 
 def perform_tasks():
 	try:
@@ -69,9 +69,11 @@ def perform_tasks():
 	except unknown_error:
 		print ('Some other error: ' + str(unknown_error))
 
-for routers in router_list:
-	print ('Connecting to device ' + routers)
-	ip_address_of_device = routers
+for ip_int in range(int(ip_network_start), int(ip_network_end + 1)):
+	
+	ip_address_of_device = ipaddress.IPv4Address(ip_int)
+	ip_address_of_device = str(ip_address_of_device)
+	print ('Connecting to device ' + ip_address_of_device)
 	ios_device = {
 	'device_type': 'cisco_ios',
 	'ip': ip_address_of_device,
