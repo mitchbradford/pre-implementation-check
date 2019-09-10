@@ -1,0 +1,16 @@
+exit
+show ver
+show ip int brief
+show int status
+show int trunk
+show arp
+show mac address-table
+show cdp nei
+show cdp nei detail
+show voice port sum
+show ip route
+show vlans
+show vlan brief
+show log
+show ip route
+show eigrp neigh
