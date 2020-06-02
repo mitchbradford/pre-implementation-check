@@ -37,10 +37,11 @@ Initial Release
 ## Authors
 
 * **Mitch Bradford** - [Github](https://github.com/mitchbradford)
+* **Brett Verney** - [Github](https://github.com/wifiwizardofoz)
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU GPLv3 License.
 
 ## Acknowledgments
 
